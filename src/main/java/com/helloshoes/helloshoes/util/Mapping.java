@@ -74,7 +74,20 @@ public class Mapping {
     public List<SalesDTO> toSalesDTOList(List<SalesEntity> sales) {
         return mapper.map(sales, List.class);
     }
-    public List<SalesEntity> toSalesList(List<SupplierDTO> sales) {
+    public List<SalesEntity> toSalesList(List<SalesDTO> sales) {
         return mapper.map(sales, List.class);
+    }
+
+    public UserDTO toUserDTO(UserEntity user) {
+        return  mapper.map(user, UserDTO.class);
+    }
+    public UserEntity toUser(UserDTO userDTO) {
+        return  mapper.map(userDTO, UserEntity.class);
+    }
+    public List<UserDTO> toUserDTOList(List<UserEntity> user) {
+        return mapper.map(user, List.class);
+    }
+    public List<UserEntity> toUserList(List<UserDTO> user) {
+        return mapper.map(user, List.class);
     }
 }
