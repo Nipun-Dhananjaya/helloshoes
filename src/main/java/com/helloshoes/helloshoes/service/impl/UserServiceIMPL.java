@@ -1,6 +1,5 @@
 package com.helloshoes.helloshoes.service.impl;
 
-import com.helloshoes.helloshoes.dto.SupplierDTO;
 import com.helloshoes.helloshoes.dto.UserDTO;
 import com.helloshoes.helloshoes.service.UserService;
 
@@ -8,7 +7,7 @@ import java.util.List;
 
 public class UserServiceIMPL implements UserService {
     @Override
-    public SupplierDTO saveUser(UserDTO userDTO) {
+    public UserDTO saveUser(UserDTO userDTO) {
         return null;
     }
 
@@ -18,12 +17,12 @@ public class UserServiceIMPL implements UserService {
     }
 
     @Override
-    public SupplierDTO getSelectedUser(String email) {
+    public UserDTO getSelectedUser(String email) {
         return null;
     }
 
     @Override
-    public List<SupplierDTO> getAllUsers() {
+    public List<UserDTO> getAllUsers() {
         return null;
     }
 

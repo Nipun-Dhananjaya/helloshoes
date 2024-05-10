@@ -33,7 +33,7 @@ public class SupplierServiceIMPL implements SupplierService {
     }
 
     @Override
-    public void updateEmployee(String employeeId, SupplierDTO supplierDTO) {
+    public void updateSupplier(String supplierId, SupplierDTO supplierDTO) {
 
     }
 }
