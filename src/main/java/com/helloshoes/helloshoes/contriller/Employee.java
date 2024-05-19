@@ -1,8 +1,6 @@
 package com.helloshoes.helloshoes.contriller;
 
-import com.helloshoes.helloshoes.dto.CustomerDTO;
 import com.helloshoes.helloshoes.dto.EmployeeDTO;
-import com.helloshoes.helloshoes.service.CustomerService;
 import com.helloshoes.helloshoes.service.EmployeeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +10,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/employee")
 @RequiredArgsConstructor
+@CrossOrigin(origins = "http://localhost:63342")
 public class Employee {
     private final EmployeeService employeeService;
     @PostMapping

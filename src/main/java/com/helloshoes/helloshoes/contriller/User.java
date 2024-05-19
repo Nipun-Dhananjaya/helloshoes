@@ -10,6 +10,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/user")
 @RequiredArgsConstructor
+@CrossOrigin(origins = "http://localhost:63342")
 public class User {
     private final UserService userService;
     @PostMapping
@@ -36,3 +37,4 @@ public class User {
         userService.deleteUser(email);
     }
 }
+

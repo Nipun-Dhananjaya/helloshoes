@@ -1,9 +1,7 @@
 package com.helloshoes.helloshoes.contriller;
 
 import com.helloshoes.helloshoes.dto.SalesDTO;
-import com.helloshoes.helloshoes.dto.UserDTO;
 import com.helloshoes.helloshoes.service.SalesService;
-import com.helloshoes.helloshoes.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,6 +10,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/sales")
 @RequiredArgsConstructor
+@CrossOrigin(origins = "http://localhost:63342")
 public class Sales {
     private final SalesService salesService;
     @PostMapping

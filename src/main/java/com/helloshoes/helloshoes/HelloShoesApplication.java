@@ -16,5 +16,5 @@ public class HelloShoesApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(HelloShoesApplication.class, args);
 	}
-
 }
+
