@@ -34,6 +34,7 @@ public class UserServiceIMPL implements UserService {
 
     @Override
     public List<UserDTO> getAllUsers() {
+        System.out.println("UserS");
         return mapping.toUserDTOList(repo.findAll());
     }
 

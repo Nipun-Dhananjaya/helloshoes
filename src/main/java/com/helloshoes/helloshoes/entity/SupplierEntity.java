@@ -1,5 +1,7 @@
 package com.helloshoes.helloshoes.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
@@ -26,5 +28,6 @@ public class SupplierEntity implements SuperEntity{
     private String contactTwo;
     private String email;
     @OneToMany(mappedBy = "supplier")
+    @JsonIgnore
     private List<InventoryEntity> items = new ArrayList<>();
 }

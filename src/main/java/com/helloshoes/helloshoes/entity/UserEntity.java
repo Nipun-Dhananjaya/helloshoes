@@ -1,5 +1,6 @@
 package com.helloshoes.helloshoes.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,8 +20,10 @@ public class UserEntity implements SuperEntity{
     private String password;
     private String role;
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    @JsonIgnore
     private EmployeeEntity emp;
     @OneToMany(mappedBy = "user")
+    @JsonIgnore
     private List<SalesEntity> sales = new ArrayList<>();
 }
 

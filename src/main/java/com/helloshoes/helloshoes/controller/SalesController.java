@@ -1,4 +1,4 @@
-package com.helloshoes.helloshoes.contriller;
+package com.helloshoes.helloshoes.controller;
 
 import com.helloshoes.helloshoes.dto.SalesDTO;
 import com.helloshoes.helloshoes.service.SalesService;
@@ -11,7 +11,7 @@ import java.util.List;
 @RequestMapping("/api/v1/sales")
 @RequiredArgsConstructor
 @CrossOrigin(origins = "http://localhost:63342")
-public class Sales {
+public class SalesController {
     private final SalesService salesService;
     @PostMapping
     public SalesDTO saveSales(@RequestBody SalesDTO user) {

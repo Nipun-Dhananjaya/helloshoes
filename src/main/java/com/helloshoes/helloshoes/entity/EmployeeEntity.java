@@ -1,5 +1,6 @@
 package com.helloshoes.helloshoes.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -26,11 +27,12 @@ public class EmployeeEntity implements SuperEntity{
     private String branch;
     private String address;
     private String contact;
-    @Column(insertable = false, updatable = false)
+    @Transient
     private String email;
     private String guardian;
     private String guardianCont;
     @OneToOne
-    @JoinColumn(name = "email")
+    @JoinColumn(name = "email", referencedColumnName = "email")
+    @JsonIgnore
     private UserEntity user;
 }

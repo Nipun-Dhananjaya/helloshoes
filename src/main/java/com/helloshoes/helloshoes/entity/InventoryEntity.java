@@ -1,5 +1,7 @@
 package com.helloshoes.helloshoes.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,9 +23,10 @@ public class InventoryEntity implements SuperEntity{
     private String picture;
     private String category;
     private double size;
-    @ManyToOne
-    @JoinColumn(name = "supCode")
-    private SupplierEntity supplier;
+    private String socks;
+    private String cleaner;
+    @Column(name = "supCode")
+    private String supCode;
     private double salePrice;
     private double buyPrice;
     private double expectedProfit;
@@ -32,4 +35,8 @@ public class InventoryEntity implements SuperEntity{
 
     @ManyToMany(mappedBy = "item")
     private List<SalesEntity> sales = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name = "supCode", referencedColumnName = "supCode", insertable = false, updatable = false)
+    @JsonIgnore
+    private SupplierEntity supplier;
 }

@@ -1,4 +1,4 @@
-package com.helloshoes.helloshoes.contriller;
+package com.helloshoes.helloshoes.controller;
 
 import com.helloshoes.helloshoes.dto.UserDTO;
 import com.helloshoes.helloshoes.service.UserService;
@@ -11,7 +11,7 @@ import java.util.List;
 @RequestMapping("/api/v1/user")
 @RequiredArgsConstructor
 @CrossOrigin(origins = "http://localhost:63342")
-public class User {
+public class UserController {
     private final UserService userService;
     @PostMapping
     public UserDTO saveUser(@RequestBody UserDTO user) {
@@ -19,6 +19,7 @@ public class User {
     }
     @GetMapping
     public List<UserDTO> getAllUsers() {
+        System.out.println("UserC");
         return userService.getAllUsers();
     }
 

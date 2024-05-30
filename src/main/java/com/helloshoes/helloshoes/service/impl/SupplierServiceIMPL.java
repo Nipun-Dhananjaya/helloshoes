@@ -22,9 +22,12 @@ public class SupplierServiceIMPL implements SupplierService {
     }
 
     @Override
-    public void deleteSupplier(String supplierId) {
-        SupplierDTO supplierDTO = mapping.toSupplierDTO(repo.getReferenceById(supplierId));
-        repo.delete(mapping.toSupplier(supplierDTO));
+    public boolean deleteSupplier(String supplierId) {
+        if (repo.existsById(supplierId)) {
+            repo.deleteById(supplierId);
+            return true;
+        }
+        return false;
     }
 
     @Override
@@ -38,7 +41,7 @@ public class SupplierServiceIMPL implements SupplierService {
     }
 
     @Override
-    public void updateSupplier(String supplierId, SupplierDTO supplierDTO) {
+    public SupplierDTO updateSupplier(String supplierId, SupplierDTO supplierDTO) {
         SupplierDTO supDTO = mapping.toSupplierDTO(repo.getReferenceById(supplierId));
         supDTO.setSupName(supplierDTO.getSupName());
         supDTO.setCategory(supplierDTO.getCategory());
@@ -48,5 +51,6 @@ public class SupplierServiceIMPL implements SupplierService {
         supDTO.setEmail(supplierDTO.getEmail());
         supDTO.setItems(supplierDTO.getItems());
         repo.save(mapping.toSupplier(supDTO));
+        return supDTO;
     }
 }

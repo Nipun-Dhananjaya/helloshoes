@@ -16,11 +16,14 @@ public class InventoryDTO {
     private String picture;
     private String category;
     private double size;
-    private SupplierDTO supplier;
+    private String socks;
+    private String cleaner;
+    private String supCode;
     private double salePrice;
     private double buyPrice;
     private double expectedProfit;
     private double profitMargin;
     private double qtv;
     private List<SalesDTO> sales = new ArrayList<>();
+    private SupplierDTO supplier;
 }

@@ -2,7 +2,10 @@ package com.helloshoes.helloshoes.service.impl;
 
 import com.helloshoes.helloshoes.dao.InventoryRepo;
 import com.helloshoes.helloshoes.dto.InventoryDTO;
+import com.helloshoes.helloshoes.dto.SupplierDTO;
+import com.helloshoes.helloshoes.dto.UserDTO;
 import com.helloshoes.helloshoes.service.InventoryService;
+import com.helloshoes.helloshoes.service.SupplierService;
 import com.helloshoes.helloshoes.util.Mapping;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -16,9 +19,19 @@ import java.util.List;
 public class InventoryServiceIMPL implements InventoryService {
     private final InventoryRepo repo;
     private final Mapping mapping;
+    private final SupplierService supplierService;
     @Override
     public InventoryDTO saveInventory(InventoryDTO inventoryDTO) {
-        return mapping.toInventoryDTO(repo.save(mapping.toInventory(inventoryDTO)));
+        if (inventoryDTO.getSupCode() == null || inventoryDTO.getSupCode().isEmpty()) {
+            throw new IllegalArgumentException("Supplier supCode must be provided");
+        }
+        if (inventoryDTO.getSupplier() == null && inventoryDTO.getSupCode() != null) {
+            SupplierDTO supplier = supplierService.getSelectedSupplier(inventoryDTO.getSupCode());
+            inventoryDTO.setSupplier(supplier);
+            return mapping.toInventoryDTO(repo.save(mapping.toInventory(inventoryDTO)));
+        }else{
+            return mapping.toInventoryDTO(repo.save(mapping.toInventory(inventoryDTO)));
+        }
     }
 
     @Override
@@ -54,3 +67,4 @@ public class InventoryServiceIMPL implements InventoryService {
         repo.save(mapping.toInventory(inventDTO));
     }
 }
+

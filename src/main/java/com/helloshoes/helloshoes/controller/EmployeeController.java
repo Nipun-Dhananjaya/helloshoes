@@ -1,4 +1,4 @@
-package com.helloshoes.helloshoes.contriller;
+package com.helloshoes.helloshoes.controller;
 
 import com.helloshoes.helloshoes.dto.EmployeeDTO;
 import com.helloshoes.helloshoes.service.EmployeeService;
@@ -11,10 +11,11 @@ import java.util.List;
 @RequestMapping("/api/v1/employee")
 @RequiredArgsConstructor
 @CrossOrigin(origins = "http://localhost:63342")
-public class Employee {
+public class EmployeeController {
     private final EmployeeService employeeService;
     @PostMapping
     public EmployeeDTO saveEmployee(@RequestBody EmployeeDTO employee) {
+        System.out.println(employee.toString());
         return employeeService.saveEmployee(employee);
     }
     @GetMapping
@@ -22,18 +23,18 @@ public class Employee {
         return employeeService.getAllEmployees();
     }
 
-    @GetMapping("/{employeeId}")
-    public EmployeeDTO getEmployeeById(@PathVariable String employeeId) {
-        return employeeService.getSelectedEmployee(employeeId);
+    @GetMapping("/{empCode}")
+    public EmployeeDTO getEmployeeById(@PathVariable String empCode) {
+        return employeeService.getSelectedEmployee(empCode);
     }
 
-    @PutMapping("/{employeeId}")
-    public void updateEmployee(@PathVariable String employeeId, @RequestBody EmployeeDTO employeeDTO) {
-        employeeService.updateEmployee(employeeId, employeeDTO);
+    @PutMapping("/{empCode}")
+    public void updateEmployee(@PathVariable String empCode, @RequestBody EmployeeDTO employeeDTO) {
+        employeeService.updateEmployee(empCode, employeeDTO);
     }
 
-    @DeleteMapping("/{employeeId}")
-    public void deleteEmployee(@PathVariable String employeeId) {
-        employeeService.deleteEmployee(employeeId);
+    @DeleteMapping("/{empCode}")
+    public void deleteEmployee(@PathVariable String empCode) {
+        employeeService.deleteEmployee(empCode);
     }
 }
