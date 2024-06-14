@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -71,8 +72,15 @@ public class Mapping {
     public SalesEntity toSales(SalesDTO salesDTO) {
         return  mapper.map(salesDTO, SalesEntity.class);
     }
-    public List<SalesDTO> toSalesDTOList(List<SalesEntity> sales) {
+    /*public List<SalesDTO> toSalesDTOList(List<SalesEntity> sales) {
         return mapper.map(sales, List.class);
+    }*/
+    public List<SalesDTO> toSalesDTOList(List<SalesEntity> salesEntities) {
+        List<SalesDTO> salesDTOS = new ArrayList<>();
+        for (SalesEntity salesEntity : salesEntities) {
+            salesDTOS.add(toSalesDTO(salesEntity));
+        }
+        return salesDTOS;
     }
     public List<SalesEntity> toSalesList(List<SalesDTO> sales) {
         return mapper.map(sales, List.class);
@@ -89,6 +97,32 @@ public class Mapping {
     }
     public List<UserEntity> toUserList(List<UserDTO> user) {
         return mapper.map(user, List.class);
+    }
+
+    public SalesItemDTO toSalesItemDTO(SalesItemEntity salesItem) {
+        return  mapper.map(salesItem, SalesItemDTO.class);
+    }
+    public SalesItemEntity toSalesItemEntity(SalesItemDTO salesItemDTO) {
+        return  mapper.map(salesItemDTO, SalesItemEntity.class);
+    }
+    /*public List<SalesItemDTO> toSalesItemDTOList(List<SalesItemEntity> salesItem) {
+        return mapper.map(salesItem, List.class);
+    }*/
+    public List<SalesItemDTO> toSalesItemDTOList(List<SalesItemEntity> salesItemEntities) {
+        List<SalesItemDTO> salesItemDTOS = new ArrayList<>();
+        for (SalesItemEntity salesItemEntity : salesItemEntities) {
+            SalesItemDTO salesItemDTO=new SalesItemDTO();
+            if (salesItemEntity.getInventory()!=null && salesItemEntity.getSales() !=null) {
+                salesItemDTO.setItemId(salesItemEntity.getInventory().getItemId());
+                salesItemDTO.setOrdId(salesItemEntity.getSales().getOrdId());
+                salesItemDTO.setQuantity(salesItemEntity.getQuantity());
+                salesItemDTOS.add(salesItemDTO);
+            }
+        }
+        return salesItemDTOS;
+    }
+    public List<SalesItemEntity> toSalesItemEntityList(List<SalesItemDTO> salesItem) {
+        return mapper.map(salesItem, List.class);
     }
 }
 

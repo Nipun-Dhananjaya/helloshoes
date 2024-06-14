@@ -1,7 +1,6 @@
 package com.helloshoes.helloshoes.service.impl;
 
 import com.helloshoes.helloshoes.dao.EmployeeRepo;
-import com.helloshoes.helloshoes.dao.UserRepo;
 import com.helloshoes.helloshoes.dto.EmployeeDTO;
 import com.helloshoes.helloshoes.dto.UserDTO;
 import com.helloshoes.helloshoes.service.EmployeeService;
@@ -56,7 +55,7 @@ public class EmployeeServiceIMPL implements EmployeeService {
 
     @Override
     @Transactional
-    public void updateEmployee(String empCode, EmployeeDTO employeeDTO) {
+    public EmployeeDTO updateEmployee(String empCode, EmployeeDTO employeeDTO) {
         EmployeeDTO empDTO = mapping.toEmployeeDTO(repo.getReferenceById(empCode));
         empDTO.setEmpName(employeeDTO.getEmpName());
         empDTO.setJoinedDate(employeeDTO.getJoinedDate());
@@ -71,5 +70,7 @@ public class EmployeeServiceIMPL implements EmployeeService {
         empDTO.setGuardian(employeeDTO.getGuardian());
         empDTO.setGuardianCont(employeeDTO.getGuardianCont());
         repo.save(mapping.toEmployee(empDTO));
+        return empDTO;
     }
 }
+

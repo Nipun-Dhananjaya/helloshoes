@@ -1,9 +1,7 @@
 package com.helloshoes.helloshoes.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -29,6 +27,8 @@ public class CustomerEntity implements SuperEntity{
     private String address;
     private String contact;
     private String email;
-    @OneToMany(mappedBy = "customer")
+    private LocalDate recentPurchase;
+    @OneToMany(mappedBy = "cust")
+    @JsonIgnore
     private List<SalesEntity> sales = new ArrayList<>();
 }

@@ -2,6 +2,7 @@ package com.helloshoes.helloshoes.service.impl;
 
 import com.helloshoes.helloshoes.dao.CustomerRepo;
 import com.helloshoes.helloshoes.dto.CustomerDTO;
+import com.helloshoes.helloshoes.entity.CustomerEntity;
 import com.helloshoes.helloshoes.service.CustomerService;
 import com.helloshoes.helloshoes.util.Mapping;
 import jakarta.transaction.Transactional;

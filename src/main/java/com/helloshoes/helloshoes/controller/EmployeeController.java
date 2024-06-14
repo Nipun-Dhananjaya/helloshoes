@@ -3,6 +3,7 @@ package com.helloshoes.helloshoes.controller;
 import com.helloshoes.helloshoes.dto.EmployeeDTO;
 import com.helloshoes.helloshoes.service.EmployeeService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -29,8 +30,9 @@ public class EmployeeController {
     }
 
     @PutMapping("/{empCode}")
-    public void updateEmployee(@PathVariable String empCode, @RequestBody EmployeeDTO employeeDTO) {
-        employeeService.updateEmployee(empCode, employeeDTO);
+    public ResponseEntity<EmployeeDTO> updateEmployee(@PathVariable String empCode, @RequestBody EmployeeDTO employeeDTO) {
+        EmployeeDTO updatedEmployee = employeeService.updateEmployee(empCode, employeeDTO);
+        return ResponseEntity.ok(updatedEmployee);
     }
 
     @DeleteMapping("/{empCode}")
@@ -38,3 +40,4 @@ public class EmployeeController {
         employeeService.deleteEmployee(empCode);
     }
 }
+

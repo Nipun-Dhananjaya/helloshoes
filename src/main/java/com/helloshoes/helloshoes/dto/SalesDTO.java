@@ -5,7 +5,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -17,7 +16,9 @@ public class SalesDTO {
     private String payMethod;
     private double subtot;
     private double discount;
-    private CustomerDTO customer;
-    private List<InventoryDTO> item = new ArrayList<>();
-    private UserDTO user;
+    private String ordStatus;
+    private String code;
+    private List<SalesItemDTO> items;
+    private String email;
 }
+

@@ -9,5 +9,5 @@ public interface EmployeeService {
     void deleteEmployee(String employeeId);
     EmployeeDTO getSelectedEmployee(String employeeId);
     List<EmployeeDTO> getAllEmployees();
-    void updateEmployee(String employeeId,EmployeeDTO employeeDTO);
+    EmployeeDTO updateEmployee(String employeeId, EmployeeDTO employeeDTO);
 }

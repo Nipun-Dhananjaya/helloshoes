@@ -27,12 +27,13 @@ public class EmployeeEntity implements SuperEntity{
     private String branch;
     private String address;
     private String contact;
-    @Transient
+    @Column(name = "email")
     private String email;
     private String guardian;
     private String guardianCont;
     @OneToOne
-    @JoinColumn(name = "email", referencedColumnName = "email")
+    @JoinColumn(name = "email", referencedColumnName = "email", insertable = false, updatable = false)
     @JsonIgnore
     private UserEntity user;
 }
+
